@@ -10,7 +10,7 @@ cd ~/Desktop/Private/SungyWeb.github.io;
 git pull;
 rm -rf ~/Desktop/Private/SungyWeb.github.io/*;
 check_result $?;
-cp -rf ~/Desktop/Private/relearn/dist/* ~/Desktop/Private/SungyWeb.github.io/;
+cp -rf ~/Desktop/Private/relearn/build/* ~/Desktop/Private/SungyWeb.github.io/;
 check_result $?;
 
 git add -A;
