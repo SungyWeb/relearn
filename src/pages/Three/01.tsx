@@ -38,7 +38,6 @@ const Three01: React.FC = () => {
     document.body.appendChild(stats.dom)
 
     const draw = () => {
-      console.count('draw')
       stats.begin()
       const { scene, camera, rendener } = ins
 

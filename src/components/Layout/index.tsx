@@ -9,7 +9,7 @@ import ReactMarkdown from 'react-markdown'
 import { useRequest } from 'ahooks'
 import { BrowserRouter, Link, Switch, Route } from 'react-router-dom'
 import routes from '../../routes'
-import RouteWithSubRoute from '../../bas-component/RouteWithSubRoute'
+import RouteWithSubRoute from '../../base-component/RouteWithSubRoute'
 
 const { Header, Content, Sider } = Layout
 export default function BasicLayout() {
