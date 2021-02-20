@@ -21,13 +21,16 @@ import { render } from '@testing-library/react'
 
 const Three02: React.FC = () => {
   const box = useRef<HTMLDivElement>(null)
+
+  const [cvsDom, setCvsDom] = useState<any>(null)
+  const [statsDom, setStatsDom] = useState<any>(null)
   // const { scene, camera, renderer } = useThree()
   useEffect(() => {
+    const stats = initStats()
     const init = () => {
       if(!box) return
       const w = Number(box.current?.clientWidth || 0)
       const h = Number(box.current?.clientHeight || 0)
-      const stats = initStats()
 
       const scene = new Scene()
       const camera = new PerspectiveCamera(45, w/h, 0.1, 1000)
@@ -60,8 +63,7 @@ const Three02: React.FC = () => {
       camera.lookAt(scene.position)
 
       box.current?.appendChild(renderer.domElement)
-
-      let step = 0
+      setCvsDom(renderer.domElement)
 
       class Controls {
         rotationSpeed = 0.5
@@ -120,26 +122,28 @@ const Three02: React.FC = () => {
         requestAnimationFrame(render)
         renderer.render(scene, camera)
       }
-
-
-      function initStats () {
-        const stats = new Stats()
-        stats.showPanel(0)
-        stats.dom.style.position = 'absolute'
-        stats.dom.style.top = '0px'
-        stats.dom.style.right = '0px'
-        stats.dom.style.left = 'unset'
-
-        document.body.appendChild(stats.dom)
-        return stats
-      }
     }
     init()
+    function initStats () {
+      const stats = new Stats()
+      stats.showPanel(0)
+      stats.dom.style.position = 'absolute'
+      stats.dom.style.top = '0px'
+      stats.dom.style.left = '0px'
+
+      setStatsDom(stats.dom)
+      return stats
+    }
+    return () => {
+      console.log('destory')
+    }
   }, [])
   return <>
     <div ref={box} style={{height: '100%', position: 'relative'}} >
+      {/* {[cvsDom]} */}
     </div>
-    <div id="stats">
+    <div id="stats" style={{position: 'fixed', top: 0, right: 0}}>
+      {/* {[statsDom]} */}
     </div>
   </>
 

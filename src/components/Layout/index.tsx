@@ -7,7 +7,7 @@ import {
 import './index.css'
 import ReactMarkdown from 'react-markdown'
 import { useRequest } from 'ahooks'
-import { BrowserRouter, Link, Switch, Route } from 'react-router-dom'
+import { HashRouter, Link, Switch, Route } from 'react-router-dom'
 import routes from '../../routes'
 import RouteWithSubRoute from '../../base-component/RouteWithSubRoute'
 
@@ -17,7 +17,7 @@ export default function BasicLayout() {
     return res.text()
   }))
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Layout className="h100">
         <Sider>
           <div className="logo">
@@ -64,6 +64,6 @@ export default function BasicLayout() {
           </Content>
         </Layout>
       </Layout>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
